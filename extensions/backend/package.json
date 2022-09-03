@@ -1,0 +1,23 @@
+{
+  "name": "twitch",
+  "version": "1.0.0",
+  "main": "main.js",
+  "license": "Unlicense",
+  "private": true,
+  "dependencies": {
+    "better-sqlite3": "^7.6.2",
+    "chalk": "^4.1.2",
+    "global-cache-dir": "^4.2.0",
+    "minimist": "^1.2.6",
+    "tmi.js": "^1.8.5",
+    "uuid": "^8.3.2",
+    "websocket": "^1.0.34"
+  },
+  "type": "module",
+  "scripts": {
+    "test": "node --experimental-vm-modules ./node_modules/.bin/jest"
+  },
+  "devDependencies": {
+    "jest": "^29.0.1"
+  }
+}

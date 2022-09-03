@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Twitchy GIMP</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div id="neutralinoapp">
+      <h2>Twitch Configuration</h2>
+      <br/>
+      <div>
+        <form action="#">
+          <label for="channel">Twitch Channel Name</label>
+          <input id="channel" type="text" value="" onchange="uiChange();" /><br />
+          <label for="password">Twitch OAuth Password</label> <span>(Get it from <a onclick="openGettc();" href="#">gettc.xyz/password</a>)</span>
+          <input id="password" type="password" value="" onchange="uiChange();" />
+          <button onclick="twitchConnect();">Connect to Twitch chat</button>
+
+
+          <br />
+          <br />
+
+          <div class="gimp-tests">
+            <h2>GIMP Tests</h2>
+            <p>Test your GIMP Script-Fu server connection. If everything is set up properly, these buttons will affect your GIMP.</p>
+            <button onclick="gimpTest();">Randomize foreground color</button>
+            <button onclick="gimpText();">Create some text</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- Neutralino.js client. This file is gitignored, 
+        because `neu update` typically downloads it.
+        Avoid copy-pasting it. 
+        -->
+    <script src="js/neutralino.js"></script>
+    <!-- Your app's source files -->
+    <script src="js/main.js"></script>
+  </body>
+</html>

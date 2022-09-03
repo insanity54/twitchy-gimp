@@ -1,0 +1,9 @@
+{
+	"scripts": {
+		"dev": "neu run"
+	},
+	"dependencies": {
+		"baby-racket": "^2.0.3",
+		"node-gimp": "^0.0.3"
+	}
+}
