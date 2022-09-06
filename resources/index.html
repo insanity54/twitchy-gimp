@@ -7,27 +7,32 @@
   </head>
   <body>
     <div id="neutralinoapp">
-      <h2>Twitch Configuration</h2>
-      <br/>
-      <div>
-        <form action="#">
+      <div class="twitch-config">
+        <h2>Twitch Configuration</h2>
+        <br/>
           <label for="channel">Twitch Channel Name</label>
           <input id="channel" type="text" value="" onchange="uiChange();" /><br />
           <label for="password">Twitch OAuth Password</label> <span>(Get it from <a onclick="openGettc();" href="#">gettc.xyz/password</a>)</span>
           <input id="password" type="password" value="" onchange="uiChange();" />
           <button onclick="twitchConnect();">Connect to Twitch chat</button>
+        <br />
+        <br />
+      </div>
 
+      <div class="gimp-config">
+        <h2>GIMP Configuration</h2>
+        <label for="gimp-image">
+          <h3>GIMP Image</h3>
+          <p>Which image do you want twitchy-gimp to act on?</p>
+          <input type="radio">
+        </label>
+      </div>
 
-          <br />
-          <br />
-
-          <div class="gimp-tests">
-            <h2>GIMP Tests</h2>
-            <p>Test your GIMP Script-Fu server connection. If everything is set up properly, these buttons will affect your GIMP.</p>
-            <button onclick="gimpTest();">Randomize foreground color</button>
-            <button onclick="gimpText();">Create some text</button>
-          </div>
-        </form>
+      <div class="gimp-tests">
+        <h2>GIMP Tests</h2>
+        <p>Test your GIMP Script-Fu server connection. If everything is set up properly, these buttons will affect your GIMP.</p>
+        <button onclick="gimpTest();">Randomize foreground color</button>
+        <button onclick="gimpText();">Create some text</button>
       </div>
     </div>
     <!-- Neutralino.js client. This file is gitignored, 

@@ -1,9 +1,13 @@
 {
 	"scripts": {
-		"dev": "neu run"
+		"dev": "neu run --frontend-lib-dev -- --window-enable-inspector"
 	},
 	"dependencies": {
 		"baby-racket": "^2.0.3",
+		"color": "^4.2.3",
 		"node-gimp": "^0.0.3"
+	},
+	"devDependencies": {
+		"concurrently": "^7.3.0"
 	}
 }
