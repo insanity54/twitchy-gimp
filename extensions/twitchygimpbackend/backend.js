@@ -140,39 +140,47 @@ async function main () {
     // create logger which depends on ws
     const log = createLogger(wsClient);
 
+    // we create the client, but we do not connect right away.
+    // we wait to connect until the Neutralino websocket is connected
+    const gimpClient = new Gimp({ reconnectTimeout: 1000 });
 
-    const gimpConnectionHandler = (async () => {
-        try {
-            // connect to GIMP
-            const gimp = new Gimp();
-            await gimp.connect();
-    
-            const res = await gimp.gimpImageList();
-            const { jse } = res;
-            // const image = jse[1][jse[1].length-1];
-            const imageCount = jse[0];
+    gimpClient.on('connect', async () => {
+        dispatchToClient(wsClient, 'gimpConnection', {});
+        // send a query to GIMP
+        // we get an open image list.
+        // if there are no open images, we throw an error
+        // const res = await gimpClient.gimpImageList();
+        // console.log(res)
+        // const { jse } = res;
+        // // const image = jse[1][jse[1].length-1];
+        // const imageCount = jse[0];
 
-            if (imageCount < 1) {
-                throw new Error('ERRNOIMAGE');
-            }
+        // if (imageCount < 1) {
+        //     dispatchToClient(wsClient, 'gimpError', {
+        //         date: new Date(),
+        //         type: 'ERRNOIMAGE',
+        //         message: 'twitchy-gimp is connected to Gimp, but Gimp does not have any open images.'
+        //     })
+        // }
+    });
 
-        } catch (e) {
-            if (/ECONNREFUSED/.test(e)) {
-                dispatchToClient(wsClient, 'gimpError', {
-                    type: 'ECONNREFUSED',
-                    message: 'twitchy-gimp was not able to connect to Gimp. Is Gimp Script-Fu Server running?'
-                });
-            } else if (/ERRNOIMAGE/.test(e)) {
-                dispatchToClient(wsClient, 'gimpError', {
-                    type: 'ERRNOIMAGE',
-                    message: 'twitchy-gimp is connected to Gimp, but Gimp does not have any open images.'
-                });
-            }
+    gimpClient.on('disconnection', () => {
+        dispatchToClient(wsClient, 'gimpDisconnection', {});
+    });
 
+    gimpClient.on('error', (e) => {
+        const d = new Date();
+        if (/ECONNREFUSED/.test(e)) {
+            dispatchToClient(wsClient, 'gimpError', {
+                date: d,
+                type: 'ECONNREFUSED',
+                message: 'twitchy-gimp was not able to connect to Gimp. Is Gimp Script-Fu Server running?'
+            });
+        } else {
             console.error(`  [>] there was an unhandled error while attempting to connect to Gimp. ${e}`);
         }
-        
-    })();
+    });
+
 
     
 
@@ -182,7 +190,10 @@ async function main () {
     };
 
     wsClient.onopen = function() {
-        log('  [>] Connected. setting up socket connection');
+        // when Neutralino ws connection is opened,
+        // we can now connect to GIMP and forward events to the frontend via the ws
+        log('  [>] Neutralino websocket is OPEN for business!');
+        gimpClient.connect();
     };
 
     wsClient.onclose = function() {

@@ -1,7 +1,7 @@
 {
   "name": "net.grimtech.twitchy-gimp-backend",
   "version": "1.0.0",
-  "main": "main.js",
+  "main": "backend.js",
   "license": "Unlicense",
   "private": true,
   "dependencies": {

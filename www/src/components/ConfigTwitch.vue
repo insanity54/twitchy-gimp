@@ -1,12 +1,10 @@
 <script setup>
   const props = defineProps({
     store: Object,
-    Neutralino: Object
   });
 
   function openGettc () {
-    console.log('ey, openGettc');
-    props.Neutralino.os.open("https://gettc.xyz/password");
+    window.Neutralino.os.open("https://gettc.xyz/password");
   }
 </script>
 

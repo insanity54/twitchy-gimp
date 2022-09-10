@@ -1,10 +1,6 @@
 <script setup>
   import { RouterLink, RouterView } from "vue-router";
 
-  let password = "";
-  let channel = "";
-
-
 </script>
 
 <template>

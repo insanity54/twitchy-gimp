@@ -1,7 +1,6 @@
 <script setup>
   const props = defineProps({
     store: Object,
-    Neutralino: Object
   });
 </script>
 

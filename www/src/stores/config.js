@@ -1,4 +1,3 @@
-// import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 
 export const useConfigStore = defineStore("config", {
@@ -23,32 +22,3 @@ export const useConfigStore = defineStore("config", {
     }
   }
 });
-
-//   const twitchChannel = ref("");
-//   const twitchPassword = ref("");
-  
-//   function setTwitchChannel (channel) {
-//     twitchChannel.value = channel;
-//   }
-//   function setTwitchPassword (password) {
-//     twitchPassword.value = password;
-//   }
-//   return { 
-//     twitchChannel, 
-//     twitchPassword 
-//   };
-// });
-
-
-
-// export const useCounterStore = defineStore('counter', {
-//   state: () => ({ count: 0, name: 'Eduardo' }),
-//   getters: {
-//     doubleCount: (state) => state.count * 2,
-//   },
-//   actions: {
-//     increment() {
-//       this.count++
-//     },
-//   },
-// })

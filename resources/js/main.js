@@ -4,9 +4,7 @@
 // See more details: https://neutralino.js.org/docs/how-to/use-a-frontend-library
 
 
-function randomIntFromInterval(min, max) { // min and max included 
-  return Math.floor(Math.random() * (max - min + 1) + min)
-}
+
 
 function showInfo() {
     document.getElementById('info').innerHTML = `
@@ -53,16 +51,6 @@ async function gimpText() {
     await Neutralino.extensions.dispatch('net.grimtech.twitchygimpbackend', 'gimpText', {
         text: 'this is some test text that was generated on the client side.'
     })
-}
-
-async function gimpTest() {
-
-    await Neutralino.extensions.dispatch('net.grimtech.twitchygimpbackend', 'gimpTest', { 
-        red: randomIntFromInterval(0, 255), 
-        green: randomIntFromInterval(0, 255),
-        blue: randomIntFromInterval(0, 255),
-    });
-    
 }
 
 

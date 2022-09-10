@@ -89,7 +89,7 @@
   "extensions": [
     {
         "id": "net.grimtech.twitchygimpbackend",
-        "command": "node ${NL_PATH}/extensions/twitchygimpbackend/main.js"
+        "command": "node ${NL_PATH}/extensions/twitchygimpbackend/backend.js"
     }
   ]
 }
